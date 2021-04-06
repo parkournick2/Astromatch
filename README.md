@@ -13,4 +13,6 @@ wireframe:
 ![Mobile1](https://user-images.githubusercontent.com/61525227/113754093-3a9d5a00-96e5-11eb-8a29-743e5935152f.png)
 ![Mobile2](https://user-images.githubusercontent.com/61525227/113754095-3a9d5a00-96e5-11eb-93c9-586508c56687.png)
 
-Agora com o wireframe, ficou fácil decidir a estrutura de componentes da aplicação.
+Agora com o wireframe, ficou fácil decidir a estrutura de componentes da aplicação e começar a codar.
+
+(a few moments later)
