@@ -14,4 +14,4 @@ A API que consumi é a Astro Match fornecida pela [Labenu](https://www.labenu.co
 > 
 > npm start
 ### Na web
-Basta entrar nesse [link](nicolastinder.surge.sh)
+Basta entrar nesse [link](http://nicolastinder.surge.sh/)
