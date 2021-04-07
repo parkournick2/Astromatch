@@ -16,7 +16,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 import ExploreIcon from '@material-ui/icons/Explore';
 import GroupIcon from '@material-ui/icons/Group';
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 
 const aluno = "nicolas-furtado-cruz";

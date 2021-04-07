@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Explore from "./pages/Explore";
 import Matchs from "./pages/Matchs";
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { SnackbarProvider} from 'notistack';
 
 function App() {
   const [page, setPage] = useState(<Explore />);

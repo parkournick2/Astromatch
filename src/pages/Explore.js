@@ -6,6 +6,9 @@ import { IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useSnackbar } from "notistack";
+import Lottie from "react-lottie";
+import animEmpty from "../animations/empty.json";
+import animLoading from "../animations/loading.json";
 
 const aluno = "nicolas-furtado-cruz";
 
@@ -50,13 +53,14 @@ const Describe = styled.p`
 `;
 
 function Explore() {
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState("carregando");
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    if (profile === null) {
-      getProfiles();
-      
+    if (profile === "carregando") {
+      setTimeout(() => {
+        getProfiles();
+      }, 500);
     }
   }, [profile]);
 
@@ -73,6 +77,7 @@ function Explore() {
 
   const chooseProfile = async (choice) => {
     const variant = "success";
+
     const body = {
       id: profile.id,
       choice: choice,
@@ -82,8 +87,12 @@ function Explore() {
         `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${aluno}/choose-person`,
         body
       );
-      enqueueSnackbar("Solicitação enviada com sucesso!", { variant });
-      getProfiles();
+      setProfile("carregando");
+      if (choice) {
+        setTimeout(() => {
+          enqueueSnackbar(`Solicitação para ${profile.name} enviada com sucesso!`, { variant, autoHideDuration: 1500 });
+        }, 500);
+      }
     } catch (err) {
       console.log(err.data);
     }
@@ -93,7 +102,38 @@ function Explore() {
 
   const profileCard = () => {
     if (profile === null) {
-      return <Describe>Você já viu todos os perfis! tente a opção reset no menu.</Describe>
+      const animOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animEmpty,
+      };
+      return (
+        <Describe>
+          <Lottie
+            isClickToPauseDisabled={true}
+            options={animOptions}
+            isStopped={false}
+            isPaused={false}
+          />
+          Você já viu todos os perfis! tente a opção reset no menu.
+        </Describe>
+      );
+    } else if (profile === "carregando") {
+      const animOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animLoading,
+      };
+      return (
+        <Describe>
+          <Lottie
+            isClickToPauseDisabled={true}
+            options={animOptions}
+            isStopped={false}
+            isPaused={false}
+          />
+        </Describe>
+      );
     } else {
       return (
         <>
