@@ -13,6 +13,7 @@ const useStyles = makeStyles(()=>({
 const Image = styled.img`
   border-radius: 10px;
   width: 200px;
+  height: 200px;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
 `;
 const Name = styled.h3`
@@ -25,15 +26,15 @@ const Idade = styled.h3`
   color: gray;
 `;
 
-function MatchCard() {
+function MatchCard(props) {
   const classes = useStyles();
   return (
     <Grid item xs={12} lg={3} sm={6}>
       <Card>
       <CardContent className={classes.root}>
-        <Image src={"https://picsum.photos/600"}/>
-        <Name>Anitta</Name>
-        <Idade>23</Idade>
+        <Image src={props.photo}/>
+        <Name>{props.name}</Name>
+        <Idade>{props.age}</Idade>
       </CardContent>
       </Card>
     </Grid>
