@@ -12,16 +12,19 @@ import {
   Switch,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import MenuIcon from "@material-ui/icons/Menu";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
-import InboxIcon from "@material-ui/icons/Inbox";
-import DraftsIcon from "@material-ui/icons/Drafts";
+import ExploreIcon from '@material-ui/icons/Explore';
+import GroupIcon from '@material-ui/icons/Group';
 import React, { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  appBar:{
+    height: '6vh',
+    justifyContent: 'center',
   },
   drawer: {
     width: "25vw",
@@ -29,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header() {
+function Header(props) {
   const classes = useStyles();
 
   const [showDrawer, setShowDrawer] = useState(false);
@@ -37,7 +40,7 @@ function Header() {
 
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <WhatshotIcon fontSize="large" />
           <Typography>Astromatch</Typography>
@@ -56,15 +59,15 @@ function Header() {
       >
         <box className={classes.drawer}>
           <List component="nav" aria-label="main mailbox folders">
-            <ListItem button>
+            <ListItem button onClick={()=>props.changePage('Explore')}>
               <ListItemIcon>
-                <InboxIcon />
+                <ExploreIcon />
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary="Explore" />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={()=>props.changePage('Matchs')}>
               <ListItemIcon>
-                <DraftsIcon />
+                <GroupIcon />
               </ListItemIcon>
               <ListItemText primary="Matchs" />
             </ListItem>
