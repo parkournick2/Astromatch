@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import MatchCard from "../components/MatchCard";
@@ -6,8 +6,17 @@ import axios from "axios";
 import Lottie from "react-lottie";
 import animLoading from "../animations/loading.json";
 import animSad from "../animations/sad.json";
+import { makeStyles } from "@material-ui/core/styles";
+
 
 const aluno = "nicolas-furtado-cruz";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.default,
+    color: theme.palette.text.primary,
+  }
+}));
 
 const Msg = styled.div`
   display: flex;
@@ -20,14 +29,13 @@ const Msg = styled.div`
 const MainContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   padding: 0px 50px 50px 50px;
+  min-height: 94vh;
 `;
 
-const Title = styled.h2``;
-
 function Matches() {
+  const classes = useStyles();
   const [matches, setMatches] = useState("carregando");
 
   useEffect(() => {
@@ -100,8 +108,8 @@ function Matches() {
   };
 
   return (
-    <MainContainer>
-      <Title>Matches</Title>
+    <MainContainer className={classes.root}>
+      <h2>Matches</h2>
       {content()}
     </MainContainer>
   );

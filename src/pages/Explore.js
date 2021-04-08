@@ -13,6 +13,10 @@ import animLoading from "../animations/loading.json";
 const aluno = "nicolas-furtado-cruz";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.default,
+    color: theme.palette.text.primary,
+  },
   dislikeIcon: {
     color: theme.palette.primary.main,
     margin: "10px",
@@ -162,7 +166,7 @@ function Explore() {
     }
   };
 
-  return <MainContainer>{profileCard()}</MainContainer>;
+  return <MainContainer className={classes.root}>{profileCard()}</MainContainer>;
 }
 
 export default Explore;
